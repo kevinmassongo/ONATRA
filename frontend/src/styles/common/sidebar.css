@@ -1,0 +1,42 @@
+.sidebar {
+    height: 100vh;
+    background-color: #2d2d2d;
+    color: white;
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+}
+
+.sidebar.open {
+    width: 250px;
+}
+
+.sidebar.closed {
+    width: 0;
+}
+
+.sidebar-nav {
+    padding: 20px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.sidebar-item p {
+    color: #908B88;
+    font-weight: 600;
+}
+
+.sidebar-item p:hover {
+    color: white;
+}

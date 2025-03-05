@@ -1,0 +1,12 @@
+.dashboard {
+    padding: 20px;
+    transition: width 0.3s ease-in-out;
+  }
+  .dashboard-container {
+    width: calc(100% - 250px);
+    transition: width 0.3s ease-in-out;
+  }
+  .dashboard-container.full-width {
+    width: 100%;
+  }
+  

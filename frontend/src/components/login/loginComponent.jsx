@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
 import '../../styles/login/login.css'
 import { useState } from "react";
-import { FaEye, FaEyeSlash, FaRegEyeSlash } from "react-icons/fa";
-import iconLogin from "../../assets/pngegg.png"
+import { FaEye, FaRegEyeSlash } from "react-icons/fa";
+import iconLogin from "../../assets/logo.png"
+import Logo from "../common/logo";
 
 
 function LoginComponent() {
@@ -92,7 +93,7 @@ function LoginComponent() {
                     </div>
                     <div className="image-login">
                         <div className="onatra-title">ONATRA S.A</div>
-                        <img src={iconLogin} alt="" />
+                        <Logo src={iconLogin} alt="l'icon de la connexion" />
                     </div>
                 </div>
             </div>
