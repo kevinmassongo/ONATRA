@@ -1,0 +1,45 @@
+version: "3.8"
+
+# services:
+#   postgres:
+#     image: postgres:latest
+#     container_name: my_postgres
+#     restart: always
+#     environment:
+#       POSTGRES_USER: admin
+#       POSTGRES_PASSWORD: Informatique12
+#       POSTGRES_DB: DB_Onatra
+#     ports:
+#       - 5432:5432
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+
+#   # Le service Prisma (si tu l'exécutes dans Docker)
+#   prisma:
+#     image: node:latest
+#     working_dir: /app
+#     volumes:
+#       - .:/app
+#     command: ["npx", "prisma", "migrate", "dev"]
+#     depends_on:
+#       - postgres
+
+# volumes:
+#   postgres_data:
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my_postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: Informatique12
+      POSTGRES_DB: db_onatra
+    ports:
+      - "5432:5432"
+    volumes:
+      - data_sql:/var/lib/postgresql/data # Persistent data storage
+
+volumes:
+  data_sql:

@@ -1,0 +1,108 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Administrateur {
+  id           String @id @default(uuid())
+  password     String
+  photo_profil String
+}
+
+model PersonnelGare {
+  id      String @id @default(uuid())
+  rapport String
+}
+
+
+model Utilisateur {
+  id        String @id @default(uuid())
+  name      String
+  email     String @unique
+  adresse   String
+  sexe      Sexe
+  age       String
+  telephone String
+  status    Status
+  password  String
+}
+model Gare {
+  id        String  @id @default(uuid())
+  reference String
+  ville     String
+  latitude  Float
+  longitude Float
+  trains    Train[] @relation("TrainToGare") 
+}
+
+model Train {
+  id          String   @id @default(uuid())
+  nom         String
+  type        String
+  description String
+  nombrePlace Int
+  heureDepart DateTime
+  heureArrive DateTime
+  vitesseMax  Float
+  capacite    Int
+  latitude    Float
+  longitude   Float
+  gareId      String?
+  gare        Gare?    @relation(fields: [gareId], references: [id], name: "TrainToGare")
+}
+
+model Conducteur {
+  id          String   @id @default(uuid())
+  heureDepart DateTime
+  heureArrive DateTime
+}
+
+model Incident {
+  id          String         @id @default(uuid())
+  description String
+  heure       DateTime
+  status      IncidentStatus
+}
+
+model Itineraire {
+  id          String @id @default(uuid())
+  nom         String
+  list_gare   String
+  list_train  String
+  distance    Int
+  gareDepart  String
+  gareArrivee String
+}
+
+model Alerte {
+  id         String   @id @default(uuid())
+  typeAlerte String
+  message    String
+  heure      DateTime
+}
+
+enum Sexe {
+  homme
+  femme
+}
+
+enum Status {
+  actif
+  inactif
+}
+
+enum IncidentStatus {
+  EN_COURS
+  RESOLU
+}
