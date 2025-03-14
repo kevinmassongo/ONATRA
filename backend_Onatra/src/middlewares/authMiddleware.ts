@@ -18,6 +18,6 @@ export const authMiddleware = (
     return;
   }
 
-  req.userId = decoded.userId; // Pas d'erreur maintenant
+  req.userId = decoded.userId;
   next();
 };

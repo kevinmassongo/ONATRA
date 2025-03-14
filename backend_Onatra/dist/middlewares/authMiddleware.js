@@ -13,7 +13,7 @@ const authMiddleware = (req, res, next) => {
         res.status(401).json({ message: "Token invalide" });
         return;
     }
-    req.userId = decoded.userId; // Pas d'erreur maintenant
+    req.userId = decoded.userId;
     next();
 };
 exports.authMiddleware = authMiddleware;
