@@ -18,7 +18,7 @@ async function seedUsers() {
                 age: "25",
                 telephone: "0123456789",
                 status: "actif",
-                password: await bcrypt_1.default.hash("Simeonshimba12", 10), // Hash du mot de passe
+                password: await bcrypt_1.default.hash("Simeonshimba12", 10),
             },
             {
                 name: "ilunga neith",
@@ -29,7 +29,6 @@ async function seedUsers() {
                 telephone: "0123456789",
                 status: "actif",
                 password: await bcrypt_1.default.hash("Vanessashimba12", 10),
-                // password: await bcrypt.hash("password2", 10), // Hash du mot de passe
             },
         ];
         for (const user of users) {

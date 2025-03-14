@@ -106,7 +106,7 @@ const loginUser = async (req, res) => {
 exports.loginUser = loginUser;
 const getCurrentUser = async (req, res) => {
     try {
-        const userId = req.userId; // Accéder à userId
+        const userId = req.userId;
         if (!userId) {
             res.status(401).json({ message: "Non autorisé" });
             return;
