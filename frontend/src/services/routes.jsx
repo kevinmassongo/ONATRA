@@ -10,16 +10,19 @@ function RouteApp() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<App />} >
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/login" element={<Login />} />
+                {/* La page login sera la page par défaut */}
+                <Route path="/" element={<Login />} />
+                
+                {/* Routes protégées après la connexion */}
+                <Route path="/" element={<App />}>
+                    <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/train-tracking" element={<TrainTracking />} />
                     <Route path="/route-planning" element={<RoutePlanning />} />
                     <Route path="/documentation" element={<SupportAndDocumentation />} />
                 </Route>
             </Routes>
         </BrowserRouter>
-    )
+    );
 }
 
 export default RouteApp;

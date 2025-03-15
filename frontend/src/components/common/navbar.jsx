@@ -13,7 +13,7 @@ function NavBar({ isSidebarOpen, setIsSidebarOpen }) {
     <div className="navbar">
       <div className="navbar-container">
         <div className="navbar-box">
-          <a href="/">
+          <a href="/app">
             <Logo src={logoOfOnatra} alt="logo de la société" style="logo" />
           </a>
           <span>ONATRA S.A</span>

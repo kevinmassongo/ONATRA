@@ -2,12 +2,23 @@ import React from "react";
 import "../../styles/common/sidebar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faBook, faList, faBell, faClockRotateLeft, faLocationDot, faChartSimple, faTrain, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({ isOpen }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Supprimer le token du localStorage
+    localStorage.removeItem("token");
+
+    // Rediriger l'utilisateur vers la page de connexion
+    navigate("/");
+  };
+
   return (
     <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
       <nav className="sidebar-nav">
-        <a href="/" className="sidebar-link">
+        <a href="/dashboard" className="sidebar-link">
           <div className="sidebar-item">
             <FontAwesomeIcon icon={faHouse} size="2" color="#908B88" />
             <p>Tableau de bord</p>
@@ -55,10 +66,10 @@ const Sidebar = ({ isOpen }) => {
             <p>Support et Documentation</p>
           </div>
         </a>
-        <a href="/login" className="sidebar-link">
+        <a href="#" className="sidebar-link" onClick={handleLogout}>
           <div className="sidebar-item">
             <FontAwesomeIcon icon={faRightFromBracket} size="2" color="#908B88" />
-            <p>Connexion</p>
+            <p>Déconnexion</p>
           </div>
         </a>
       </nav>
