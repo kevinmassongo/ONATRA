@@ -5,6 +5,7 @@ import Dashboard from "../pages/dashboard";
 import TrainTracking from "../pages/trainTracking";
 import RoutePlanning from "../pages/routePlanning";
 import SupportAndDocumentation from "../pages/supportAndDocumentation";
+import Register from "../pages/register";
 
 function RouteApp() {
     return (
@@ -12,8 +13,8 @@ function RouteApp() {
             <Routes>
                 {/* La page login sera la page par défaut */}
                 <Route path="/" element={<Login />} />
-                
-                {/* Routes protégées après la connexion */}
+
+                <Route path="/register" element={<Register />} />
                 <Route path="/" element={<App />}>
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/train-tracking" element={<TrainTracking />} />
