@@ -145,8 +145,8 @@ function LoginComponent() {
                     </div>
                     <Button type="submit">Se connecter</Button>
                     <div className="navigateToRegister mt-2">
-                        <span className="text-[#7D7D7D] italic mr-2">Vous n'avez pas de compte ?</span>
-                        <CtaLink onClick={navigateToRegister} className="ml-2">
+                        <span className="text-[#7D7D7D] italic ">Vous n'avez pas de compte ?</span>
+                        <CtaLink onClick={navigateToRegister}>
                             Inscrivez-vous ici !
                         </CtaLink>
                     </div>

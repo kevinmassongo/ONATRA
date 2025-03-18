@@ -227,6 +227,7 @@ function RegisterComponent() {
                                     <span className="text-red-500">{errors.gender.message}</span>
                                 )}
                             </div>
+                            
                         </div>
                     </div>
                     <Button type="submit">S'inscrire</Button>
