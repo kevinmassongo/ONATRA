@@ -1,80 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/common/sidebar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faBook, faList, faBell, faClockRotateLeft, faLocationDot, faChartSimple, faTrain, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate, useLocation } from "react-router-dom";
+import OpenMenu from "../../assets/OpenMenu.svg";
+import Train from "../../assets/Train.svg";
+import Itineraire from "../../assets/Itinéraire.svg";
+import Station from "../../assets/StationCoordination.svg";
+import Alert from "../../assets/Alert.svg";
+import Report from "../../assets/Report.svg";
+import Logo from "./logo";
 
-const Sidebar = ({ isOpen }) => {
-  const navigate = useNavigate();
+const Sidebar = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [isOpen, setIsOpen] = useState(false); // Initial state: icons only
 
-  const handleLogout = () => {
-    // Supprimer le token du localStorage
-    localStorage.removeItem("token");
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/");
+    };
 
-    // Rediriger l'utilisateur vers la page de connexion
-    navigate("/");
-  };
+    const toggleSidebar = () => {
+        setIsOpen(!isOpen);
+    };
 
-  return (
-    <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
-      <nav className="sidebar-nav">
-        <a href="/dashboard" className="sidebar-link">
-          <div className="sidebar-item">
-            <FontAwesomeIcon icon={faHouse} size="2" color="#908B88" />
-            <p>Tableau de bord</p>
-          </div>
-        </a>
-        <a href="/train-tracking" className="sidebar-link">
-          <div className="sidebar-item">
-            <FontAwesomeIcon icon={faLocationDot} size="2" color="#908B88" />
-            <p>Suivi de trains</p>
-          </div>
-        </a>
-        <a href="/route-planning" className="sidebar-link">
-          <div className="sidebar-item">
-            <FontAwesomeIcon icon={faList} size="2" color="#908B88" />
-            <p>Planification des itinéraires</p>
-          </div>
-        </a>
-        <a href="/listuser" className="sidebar-link">
-          <div className="sidebar-item">
-            <FontAwesomeIcon icon={faChartSimple} size="2" color="#908B88" />
-            <p>Rapport et analyse</p>
-          </div>
-        </a>
-        <a href="/listuser" className="sidebar-link">
-          <div className="sidebar-item">
-            <FontAwesomeIcon icon={faTrain} size="2" color="#908B88" />
-            <p>Coordination des gares</p>
-          </div>
-        </a>
-        <a href="/listuser" className="sidebar-link">
-          <div className="sidebar-item">
-            <FontAwesomeIcon icon={faBell} size="2" color="#908B88" />
-            <p>Gestion des Alertes et Sécurité</p>
-          </div>
-        </a>
-        <a href="/listuser" className="sidebar-link">
-          <div className="sidebar-item">
-            <FontAwesomeIcon icon={faClockRotateLeft} size="2" color="#908B88" />
-            <p>Historique et Journalisation</p>
-          </div>
-        </a>
-        <a href="/documentation" className="sidebar-link">
-          <div className="sidebar-item">
-            <FontAwesomeIcon icon={faBook} size="2" color="#908B88" />
-            <p>Support et Documentation</p>
-          </div>
-        </a>
-        <a href="#" className="sidebar-link" onClick={handleLogout}>
-          <div className="sidebar-item">
-            <FontAwesomeIcon icon={faRightFromBracket} size="2" color="#908B88" />
-            <p>Déconnexion</p>
-          </div>
-        </a>
-      </nav>
-    </div>
-  );
+    const links = [
+        { path: "/train-tracking", label: "Suivi de trains", icon: Train },
+        { path: "/itinary-management", label: "Gestion des itinéraires", icon: Itineraire },
+        { path: "/station-coordination", label: "Coordination des Gares", icon: Station },
+        { path: "/alert-management", label: "Alertes et Sécurité", icon: Alert },
+        { path: "/reports", label: "Rapports et Analyses", icon: Report },
+    ];
+
+    return (
+        <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
+            <nav className="sidebar-nav">
+                <div className="menuOpen" onClick={toggleSidebar}>
+                    <a className="sidebar-link-menu">
+                        <Logo src={OpenMenu} alt="logo open menu" className="logo" />
+                    </a>
+                </div>
+                {links.map((link) => (
+                    <a
+                        key={link.path}
+                        href={link.path}
+                        className={`sidebar-link ${location.pathname === link.path ? "active" : ""}`}
+                    >
+                        <div className="sidebar-item">
+                            <Logo src={link.icon} className="logo" />
+                            {isOpen && <span>{link.label}</span>}
+                        </div>
+                    </a>
+                ))}
+                <a href="#" className="sidebar-link" onClick={handleLogout}>
+                    <div className="sidebar-item">
+                        <FontAwesomeIcon icon={faRightFromBracket} size="2" color="#908B88" />
+                        {isOpen && <span>Déconnexion</span>}
+                    </div>
+                </a>
+            </nav>
+        </div>
+    );
 };
 
 export default Sidebar;

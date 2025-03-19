@@ -1,42 +1,119 @@
 .sidebar {
     height: 100vh;
-    background-color: #2d2d2d;
+    background-color: #22333B;
     color: white;
     overflow: hidden;
     transition: width 0.3s ease-in-out;
+    width: 60px; 
+    padding: 8px;
+    margin: 8px;
+    border-radius: 16px;
 }
 
 .sidebar.open {
-    width: 250px;
+    width: 250px; /* Expanded width: icons and labels */
 }
 
-.sidebar.closed {
-    width: 0;
+.sidebar.nav {
+    padding: 10px;
 }
 
-.sidebar-nav {
-    padding: 20px;
+.sidebar-link-menu {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    width: 100%;
+    justify-content: center;
+}
+
+.sidebar.open .sidebar-link-menu {
+    justify-content: flex-start;
+}
+
+.sidebar.open .sidebar-link-menu {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    width: 25%;
+    justify-content: center;
+}
+
+.sidebar-link-menu:hover {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .sidebar-link {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 12px 15px;
     text-decoration: none;
     color: white;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.sidebar-link:hover {
+    background-color: rgba(219, 153, 92, 0.2);
 }
 
 .sidebar-item {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
 }
 
-.sidebar-item p {
-    color: #908B88;
+.sidebar.open .sidebar-item {
+    justify-content: flex-start;
+}
+
+.sidebar-item span {
     font-weight: 600;
+    font-size: 14px;
+    white-space: nowrap;
 }
 
-.sidebar-item p:hover {
+.logo {
+    height: 30px;
+    width: 30px;
+}
+
+.sidebar-link.active {
+    background-color: #DB995C;
+}
+
+.sidebar-link.active .sidebar-item span {
     color: white;
+}
+
+.sidebar-link.active .logo,
+.sidebar-link.active svg {
+    color: white;
+}
+
+.sidebar-link:last-child {
+    margin-top: auto;
+    background-color: transparent;
+    justify-content: center;
+}
+
+.sidebar.open .sidebar-link:last-child {
+    justify-content: flex-start;
+}
+
+.sidebar-link:last-child:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menuOpen {
+    cursor: pointer;
 }

@@ -5,21 +5,21 @@ import Sidebar from "./components/common/sidebar";
 import "./App.css";
 
 function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Initial state: closed (icons only)
 
-  return (
-    <div className="app-container">
-      <NavBar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-
-      <div className="main-layout">
-        <Sidebar isOpen={isSidebarOpen} />
-
-        <div className={`content ${isSidebarOpen ? "shifted" : "full-width"}`}>
-          <Outlet />
+    return (
+        <div className="app-container">
+            <div className="layout-row">
+                <Sidebar setIsOpen={setIsSidebarOpen} />
+                <div className="layout-column">
+                    <NavBar />
+                    <div className="content">
+                        <Outlet />
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default App;

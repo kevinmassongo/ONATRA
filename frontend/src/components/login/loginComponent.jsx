@@ -101,9 +101,10 @@ function LoginComponent() {
                                     required: "Ce champ est obligatoire",
                                     minLength: 6,
                                     pattern: {
-                                        value: /^[a-zA-Z0-9_]/i,
-                                        message: "Ce champ n'est pas au bon format",
-                                    },
+                                        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i,
+                                        message: "Email invalide",
+                                    }
+                                    ,
                                 })}
                             />
                             <span className="whitespace-nowrap block rounded-l-md rounded-r-none cursor-pointer text-center px-3 py-2 text-xs leading-6 text-gray-600 bg-blue-200 border border-blue-400 font-bold transition-colors flex items-center justify-center -ml-1">

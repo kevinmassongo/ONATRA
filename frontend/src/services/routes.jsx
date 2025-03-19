@@ -3,9 +3,11 @@ import App from "../App";
 import Login from "../pages/login";
 import Dashboard from "../pages/dashboard";
 import TrainTracking from "../pages/trainTracking";
-import RoutePlanning from "../pages/routePlanning";
-import SupportAndDocumentation from "../pages/supportAndDocumentation";
 import Register from "../pages/register";
+import ItinaryManagement from "../pages/itinaryManagement";
+import Reports from "../pages/ReportAndAnalysis";
+import AlertManagement from "../pages/alertManagement";
+import StationCoordination from "../pages/stationCoordination";
 
 function RouteApp() {
     return (
@@ -16,10 +18,11 @@ function RouteApp() {
 
                 <Route path="/register" element={<Register />} />
                 <Route path="/" element={<App />}>
-                    <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/train-tracking" element={<TrainTracking />} />
-                    <Route path="/route-planning" element={<RoutePlanning />} />
-                    <Route path="/documentation" element={<SupportAndDocumentation />} />
+                    <Route path="/station-coordination" element={<StationCoordination />} />
+                    <Route path="/itinary-management" element={<ItinaryManagement />} />
+                    <Route path="/alert-management" element={<AlertManagement />} />
+                    <Route path="/reports" element={<Reports />} />
                 </Route>
             </Routes>
         </BrowserRouter>

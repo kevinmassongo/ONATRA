@@ -1,29 +1,41 @@
 import React from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import logoOfOnatra from "../../assets/logo-white.png";
+import logoOfOnatra from "../../assets/logo-onatra.svg";
+import userPhoto from "../../assets/user-photo.svg";
+import notification from "../../assets/notification.svg";
+import search from "../../assets/search.svg";
 import Logo from "./logo";
 import "../../styles/common/navbar.css";
 
-function NavBar({ isSidebarOpen, setIsSidebarOpen }) {
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
+function NavBar() {
   return (
     <div className="navbar">
       <div className="navbar-container">
         <div className="navbar-box">
-          <a href="/app">
-            <Logo src={logoOfOnatra} alt="logo de la société" style="logo" />
+          <a href="/train-tracking">
+            <Logo
+              src={logoOfOnatra}
+              alt="logo de la société"
+              className="logo-onatra"
+            />
           </a>
-          <span>ONATRA S.A</span>
         </div>
-        <div className="menu" onClick={toggleSidebar}>
-          {isSidebarOpen ? <FaBars color="white" fontSize={20} /> : <FaTimes color="white" fontSize={20} />}
+        <div className="navbar-item">
+          <div>
+            <Logo src={search} alt="logo open menu" className="logo" />
+
+          </div>
+          <div>
+            <Logo src={notification} alt="logo open menu" className="logo" />
+
+          </div>
+          <div>
+
+            <Logo src={userPhoto} alt="logo open menu" className="logo" />
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default NavBar;
+export default NavBar;  
